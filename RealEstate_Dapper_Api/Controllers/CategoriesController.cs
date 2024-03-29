@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using RealEstate_Dapper_Api.Dtos.CategoryDtos;
-using RealEstate_Dapper_Api.Repostories;
+using RealEstate_Dapper_Api.Repostories.CategoryRepository;
 
 namespace RealEstate_Dapper_Api.Controllers
 {
@@ -28,7 +28,7 @@ namespace RealEstate_Dapper_Api.Controllers
             _categoryRepository.CreateCategory(createCategoryDto);
             return Ok("Kategori Başarılı Şekilde Eklendi");
         }
-        [HttpDelete]
+        [HttpDelete("{id}")]
 
         public async Task<IActionResult> DeleteCategory(int id)
         {
@@ -41,11 +41,13 @@ namespace RealEstate_Dapper_Api.Controllers
             _categoryRepository.UpdateCategory(updateCategoryDto);
             return Ok("Kategori Başarılı Şekilde Güncellendi");
         }
+
+
         //HttpGet i yukarıda 1 kere kullandımız için burada parametreli olark kullanmak zorundayız.
         [HttpGet("{id}")]
         public async Task<IActionResult> GetCategory(int id)
         {
-            var value = _categoryRepository.GetCategory(id);
+            var value = await _categoryRepository.GetCategory(id);
             return Ok(value);
         }
 

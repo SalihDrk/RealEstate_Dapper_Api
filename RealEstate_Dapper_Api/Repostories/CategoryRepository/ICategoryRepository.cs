@@ -1,6 +1,6 @@
 ﻿using RealEstate_Dapper_Api.Dtos.CategoryDtos;
 
-namespace RealEstate_Dapper_Api.Repostories
+namespace RealEstate_Dapper_Api.Repostories.CategoryRepository
 {
     public interface ICategoryRepository
     {
@@ -12,6 +12,6 @@ namespace RealEstate_Dapper_Api.Repostories
 
         void UpdateCategory(UpdateCategoryDto categoryDto);
 
-        Task <GetByIDCategoryDto> GetCategory(int id);
+        Task<GetByIDCategoryDto> GetCategory(int id);
     }
 }
